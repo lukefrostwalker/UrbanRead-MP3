@@ -1,6 +1,5 @@
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import { Helmet } from 'react-helmet-async';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
@@ -48,11 +47,13 @@ export default function SigninPage() {
         <title>Sign in</title>
       </Helmet>
 
-      <h1 className="my-3">Sign in</h1>
+      <div className="d-flex justify-content-center mb-3 mt-3">
+        <h1 className="h1-title py-1 px-3">Sign in</h1>
+      </div>
 
       <Form onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="email">
-          <Form.Label>Email</Form.Label>
+          <Form.Label className="yellow">Email</Form.Label>
           <Form.Control
             type="email"
             required
@@ -61,7 +62,7 @@ export default function SigninPage() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="password">
-          <Form.Label>Password</Form.Label>
+          <Form.Label className="yellow">Password</Form.Label>
           <Form.Control
             type="password"
             required
@@ -70,11 +71,15 @@ export default function SigninPage() {
         </Form.Group>
 
         <div className="mb-3">
-          <Button type="submit">Sign in</Button>
+          <button type="submit" className="placeOrderBtn">
+            Sign in
+          </button>
         </div>
 
         <div className="mb-3">
-          New customer?{' '}
+          <span>
+            <em>New customer?</em>
+          </span>{' '}
           <Link to={`/signup?redirect=${redirect}`}>
             Create your UrbanRead account
           </Link>

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import { Store } from '../Store';
 import CheckoutSteps from '../components/CheckoutSteps';
@@ -62,11 +61,13 @@ export default function ShippingInfo() {
 
       <CheckoutSteps step1 step2></CheckoutSteps>
       <div className="container small-container">
-        <h1 className="my-3">Shipping Address</h1>
+        <div className="d-flex justify-content-center mb-3 mt-3">
+          <h1 className="h1-title py-1 px-3">Shipping Information</h1>
+        </div>
 
         <Form onSubmit={submitHandler}>
           <Form.Group className="mb-3" controlId="fullName">
-            <Form.Label>Full Name</Form.Label>
+            <Form.Label className="yellow">Full Name</Form.Label>
             <Form.Control
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
@@ -75,7 +76,7 @@ export default function ShippingInfo() {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="address">
-            <Form.Label>Address</Form.Label>
+            <Form.Label className="yellow">Address</Form.Label>
             <Form.Control
               value={address}
               onChange={(e) => setAddress(e.target.value)}
@@ -84,7 +85,7 @@ export default function ShippingInfo() {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="city">
-            <Form.Label>City</Form.Label>
+            <Form.Label className="yellow">City</Form.Label>
             <Form.Control
               value={city}
               onChange={(e) => setCity(e.target.value)}
@@ -93,7 +94,7 @@ export default function ShippingInfo() {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="postalCode">
-            <Form.Label>Postal Code</Form.Label>
+            <Form.Label className="yellow">Postal Code</Form.Label>
             <Form.Control
               value={postalCode}
               onChange={(e) => setPostalCode(e.target.value)}
@@ -102,7 +103,7 @@ export default function ShippingInfo() {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="country">
-            <Form.Label>Country</Form.Label>
+            <Form.Label className="yellow">Country</Form.Label>
             <Form.Control
               value={country}
               onChange={(e) => setCountry(e.target.value)}
@@ -110,9 +111,9 @@ export default function ShippingInfo() {
             />
           </Form.Group>
           <div className="mb-3">
-            <Button variant="primary" type="submit">
+            <button className='placeOrderBtn' type="submit">
               Continue
-            </Button>
+            </button>
           </div>
         </Form>
       </div>

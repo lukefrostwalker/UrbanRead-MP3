@@ -46,7 +46,9 @@ export default function HomePage() {
       <Helmet>
         <title>UrbanRead</title>
       </Helmet>
-      <h1>Featured Books</h1>
+      <div className="d-flex justify-content-center mb-3 ">
+        <h1 className="h1-title py-1 px-3">Book Titles</h1>
+      </div>
 
       <div className="bookshelf">
         {loading ? (
@@ -55,9 +57,9 @@ export default function HomePage() {
           <MessageBox variant="danger">{error}</MessageBox>
         ) : (
           <Row>
-            {products.map((book) => (
-              <Col key={book.url} sm={6} md={3} lg={3} className="mb-3">
-                <Product book={book} />
+            {products.map((product) => (
+              <Col key={product.url} sm={6} md={3} lg={3} className="mb-3">
+                <Product product={product} />
               </Col>
             ))}
           </Row>

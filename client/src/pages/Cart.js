@@ -42,27 +42,34 @@ export default function Cart() {
       <Helmet>
         <title>Shopping Cart</title>
       </Helmet>
-      <h1>Shopping Cart</h1>
+      <div className="d-flex justify-content-center mb-3 ">
+        <h1 className="h1-title py-1 px-3">Shopping Cart</h1>
+      </div>
       <Row>
         <Col md={8}>
           {cartItems.length === 0 ? (
-            <MessageBox>
+            <MessageBox className="messageBox">
               Cart is empty. <Link to="/">Go Shopping</Link>
             </MessageBox>
           ) : (
             <ListGroup>
               {cartItems.map((item) => (
-                <ListGroup.Item key={item.id}>
+                <ListGroup.Item key={item.id} className="mb-1">
                   <Row className="align-items-center">
-                    <Col md={4}>
+                    <Col md={6}>
                       <img
                         src={item.image}
                         alt={item.name}
                         className="img-fluid rounded img-thumbnail"
                       ></img>{' '}
-                      <Link to={`/product/${item.url}`}>{item.name}</Link>
+                      <Link
+                        to={`/product/${item.url}`}
+                        className="product-card-title"
+                      >
+                        <small>{item.name}</small>
+                      </Link>
                     </Col>
-                    <Col md={3}>
+                    <Col md={2}>
                       <Button
                         variant="light"
                         onClick={() =>
@@ -70,7 +77,7 @@ export default function Cart() {
                         }
                         disabled={item.quantity === 1}
                       >
-                        <i className="fas fa-minus-circle"></i>
+                        <i className="fas fa-minus-circle shoppingCartI"></i>
                       </Button>{' '}
                       <span>{item.quantity}</span>{' '}
                       <Button
@@ -80,16 +87,18 @@ export default function Cart() {
                         }
                         disabled={item.quantity === item.countInStock}
                       >
-                        <i className="fas fa-plus-circle"></i>
+                        <i className="fas fa-plus-circle shoppingCartI"></i>
                       </Button>{' '}
                     </Col>
-                    <Col md={3}>₱{item.price}</Col>
+                    <Col md={2} className="shoppingCartPrice fw-bold">
+                      ₱{item.price}
+                    </Col>
                     <Col md={2}>
                       <Button
                         variant="light"
                         onClick={() => removeItemHandler(item)}
                       >
-                        <i className="fas fa-trash"></i>
+                        <i className="fas fa-trash shoppingCartI"></i>
                       </Button>
                     </Col>
                   </Row>
@@ -103,22 +112,37 @@ export default function Cart() {
             <Card.Body>
               <ListGroup variant="flush">
                 <ListGroup.Item>
-                  <h3>
+                  <h2>
                     Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}{' '}
-                    items) : ₱
-                    {cartItems.reduce((a, c) => a + c.price * c.quantity, 0)}
-                  </h3>
+                    items) :<br />
+                    <span className="yellow pt-5">
+                      ₱{' '}
+                      {cartItems.reduce((a, c) => a + c.price * c.quantity, 0)}
+                    </span>
+                  </h2>
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <div className="d-grid">
-                    <Button
-                      type="button"
-                      variant="primary"
-                      onClick={checkoutHandler}
-                      disabled={cartItems.length === 0}
-                    >
-                      Proceed to Checkout
-                    </Button>
+                    {cartItems.length === 0 ? (
+                      <Button
+                        type="button"
+                        variant="primary"
+                        onClick={checkoutHandler}
+                        disabled
+                      >
+                        Proceed to Checkout
+                      </Button>
+                    ) : (
+                      <button
+                        className="placeOrderBtn"
+                        type="button"
+                        variant="primary"
+                        onClick={checkoutHandler}
+                        disabled={cartItems.length === 0}
+                      >
+                        Proceed to Checkout
+                      </button>
+                    )}
                   </div>
                 </ListGroup.Item>
               </ListGroup>

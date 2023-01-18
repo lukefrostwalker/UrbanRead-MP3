@@ -64,11 +64,13 @@ export default function ProfilePage() {
         <title>User Profile</title>
       </Helmet>
 
-      <h1 className="my-3">User Profile</h1>
+      <div className="d-flex justify-content-center mb-3 mt-3">
+        <h1 className="h1-title py-1 px-3">Hello, {name}</h1>
+      </div>
 
       <form onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="name">
-          <Form.Label>Name</Form.Label>
+          <Form.Label className="yellow">Name</Form.Label>
           <Form.Control
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -77,7 +79,7 @@ export default function ProfilePage() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="name">
-          <Form.Label>Email</Form.Label>
+          <Form.Label className="yellow">Email</Form.Label>
           <Form.Control
             type="email"
             value={email}
@@ -87,7 +89,7 @@ export default function ProfilePage() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="password">
-          <Form.Label>Password</Form.Label>
+          <Form.Label className="yellow">Password</Form.Label>
           <Form.Control
             type="password"
             onChange={(e) => setPassword(e.target.value)}
@@ -95,7 +97,7 @@ export default function ProfilePage() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="password">
-          <Form.Label>Confirm Password</Form.Label>
+          <Form.Label className="yellow">Confirm Password</Form.Label>
           <Form.Control
             type="password"
             onChange={(e) => setConfirmPassword(e.target.value)}
@@ -103,7 +105,9 @@ export default function ProfilePage() {
         </Form.Group>
 
         <div className="mb-3">
-          <Button type="submit">Update</Button>
+          <button type="submit" className="placeOrderBtn">
+            Update
+          </button>
         </div>
       </form>
     </div>

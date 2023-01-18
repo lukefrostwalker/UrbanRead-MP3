@@ -1,13 +1,15 @@
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Rating from './Rating';
 import { useContext } from 'react';
 import { Store } from '../Store';
 import axios from 'axios';
 
 export default function Product(props) {
-  const { book } = props;
+  const { product } = props;
+
+  const navigate = useNavigate();
 
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const {
@@ -15,7 +17,7 @@ export default function Product(props) {
   } = state;
 
   const addToCartHandler = async (item) => {
-    const existItem = cartItems.find((x) => x._id === book._id);
+    const existItem = cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
     const { data } = await axios.get(`/api/products/${item._id}`);
     if (data.countInStock < quantity) {
@@ -28,26 +30,47 @@ export default function Product(props) {
     });
   };
 
+  const detailsPage = () => {
+    navigate(`/product/${product.url}`);
+  };
+
   return (
-    <Card className="h-100">
-      <Link to={`/product/${book.url}`}>
-        <img src={book.image} className="card-img-top" alt={book.name} />
+    <Card className="h-100 product-card">
+      <Link to={`/product/${product.url}`}>
+        <img
+          src={product.image}
+          className="card-img-top img-fluid product-card-img"
+          alt={product.name}
+        />
       </Link>
-      <Card.Body>
-        <Link to={`/product/${book.url}`}>
-          <Card.Title>{book.name}</Card.Title>
+      <Card.Body className="d-flex flex-column justify-content-between">
+        <Link to={`/product/${product.url}`} className="product-card-title">
+          <Card.Title>{product.name}</Card.Title>
         </Link>
-        <Rating rating={book.rating} numReviews={book.numReviews} />
-        <Card.Text>
-          <strong>₱{book.price}</strong>
+
+        <Rating rating={product.rating} numReviews={product.numReviews} />
+
+        <Card.Text className="mt-2">
+          <strong className="product-card-price mt-2">₱{product.price}</strong>
         </Card.Text>
-        {book.countInStock === 0 ? (
-          <Button variant="light" disabled>
-            Out of Stock
-          </Button>
-        ) : (
-          <Button onClick={() => addToCartHandler(book)}>Add to Cart</Button>
-        )}
+
+        <div className="d-flex justify-content-center">
+          {product.countInStock === 0 ? (
+            <button variant="light" disabled className="oosBtn">
+              Out of Stock
+            </button>
+          ) : (
+            <button
+              className="addToCartBtn"
+              onClick={() => addToCartHandler(product)}
+            >
+              <i className="fa-solid fa-plus"></i> Cart
+            </button>
+          )}
+          <button onClick={detailsPage} className="detailsBtn">
+            <i className="fa-solid fa-circle-info"></i> Details
+          </button>
+        </div>
       </Card.Body>
     </Card>
   );

@@ -39,13 +39,15 @@ export default function Payment() {
           <title>Payment Method</title>
         </Helmet>
 
-        <h1 className="my-3">Payment Method</h1>
+        <div className="d-flex justify-content-center mb-3 mt-3">
+          <h1 className="h1-title py-1 px-3">Payment Method</h1>
+        </div>
         <Form onSubmit={submitHandler}>
           <div className="mb-3">
             <Form.Check
               type="radio"
               id="PayPal"
-              label="PayPal"
+              label={<i className="fa-brands fa-cc-paypal fa-2xl"></i>}
               value="PayPal"
               checked={paymentMethodName === 'PayPal'}
               onChange={(e) => setPaymentMethod(e.target.value)}
@@ -56,7 +58,7 @@ export default function Payment() {
             <Form.Check
               type="radio"
               id="Stripe"
-              label="Stripe"
+              label={<i className="fa-brands fa-stripe fa-2xl"></i>}
               value="Stripe"
               checked={paymentMethodName === 'Stripe'}
               onChange={(e) => setPaymentMethod(e.target.value)}
@@ -64,7 +66,9 @@ export default function Payment() {
           </div>
 
           <div className="mb-3">
-            <Button type="submit">Continue</Button>
+            <button className="placeOrderBtn" type="submit">
+              Continue
+            </button>
           </div>
         </Form>
       </div>

@@ -1,6 +1,5 @@
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import { Helmet } from 'react-helmet-async';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
@@ -55,11 +54,13 @@ export default function SignupPage() {
         <title>Sign up</title>
       </Helmet>
 
-      <h1 className="my-3">Sign up</h1>
+      <div className="d-flex justify-content-center mb-3 mt-3">
+        <h1 className="h1-title py-1 px-3">Sign up</h1>
+      </div>
 
       <Form onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="name">
-          <Form.Label>Name</Form.Label>
+          <Form.Label className="yellow">Name</Form.Label>
           <Form.Control
             type="name"
             required
@@ -68,7 +69,7 @@ export default function SignupPage() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="email">
-          <Form.Label>Email</Form.Label>
+          <Form.Label className="yellow">Email</Form.Label>
           <Form.Control
             type="email"
             required
@@ -77,7 +78,7 @@ export default function SignupPage() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="password">
-          <Form.Label>Password</Form.Label>
+          <Form.Label className="yellow">Password</Form.Label>
           <Form.Control
             type="password"
             required
@@ -86,7 +87,7 @@ export default function SignupPage() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="confirmPassword">
-          <Form.Label>Confirm Password</Form.Label>
+          <Form.Label className="yellow">Confirm Password</Form.Label>
           <Form.Control
             type="password"
             required
@@ -95,11 +96,15 @@ export default function SignupPage() {
         </Form.Group>
 
         <div className="mb-3">
-          <Button type="submit">Sign up</Button>
+          <button type="submit" className="placeOrderBtn">
+            Sign up
+          </button>
         </div>
 
         <div className="mb-3">
-          Already have an account?{' '}
+          <span>
+            <em>Already have an account?</em>
+          </span>{' '}
           <Link to={`/signin?redirect=${redirect}`}>Sign in</Link>
         </div>
       </Form>
