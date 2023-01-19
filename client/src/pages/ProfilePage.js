@@ -2,7 +2,6 @@ import React, { useContext, useReducer, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Form from 'react-bootstrap/Form';
 import { Store } from '../Store';
-import Button from 'react-bootstrap/Button';
 import { toast } from 'react-toastify';
 import { getError } from '../utils';
 import axios from 'axios';
@@ -36,25 +35,37 @@ export default function ProfilePage() {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    try {
-      const { data } = await axios.put(
-        '/api/users/profile',
-        {
-          name,
-          email,
-          password,
-        },
-        { headers: { Authorization: `Bearer ${userInfo.token}` } }
-      );
-      dispatch({ type: 'UPDATE_SUCCESS' });
-      ctxDispatch({ type: 'USER_SIGNIN', payload: data });
-      localStorage.setItem('userInfo', JSON.stringify(data));
-      toast.success('Update successful.');
-    } catch (err) {
-      dispatch({
-        type: 'FETCH_FAIL',
-      });
-      toast.error(getError(err));
+
+    switch (password === confirmPassword) {
+      case false:
+        toast.error('Password mismatch');
+        break;
+
+      case true:
+        try {
+          const { data } = await axios.put(
+            '/api/users/profile',
+            {
+              name,
+              email,
+              password,
+            },
+            { headers: { Authorization: `Bearer ${userInfo.token}` } }
+          );
+          dispatch({ type: 'UPDATE_SUCCESS' });
+          ctxDispatch({ type: 'USER_SIGNIN', payload: data });
+          localStorage.setItem('userInfo', JSON.stringify(data));
+          toast.success('Update successful.');
+        } catch (err) {
+          dispatch({
+            type: 'FETCH_FAIL',
+          });
+          toast.error(getError(err));
+        }
+        break;
+
+      default:
+        toast.error('Try Again');
     }
   };
 
@@ -78,7 +89,7 @@ export default function ProfilePage() {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="name">
+        <Form.Group className="mb-3" controlId="email">
           <Form.Label className="yellow">Email</Form.Label>
           <Form.Control
             type="email"
@@ -96,7 +107,7 @@ export default function ProfilePage() {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="password">
+        <Form.Group className="mb-3" controlId="confirmPassword">
           <Form.Label className="yellow">Confirm Password</Form.Label>
           <Form.Control
             type="password"

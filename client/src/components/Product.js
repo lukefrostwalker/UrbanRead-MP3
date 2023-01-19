@@ -1,10 +1,10 @@
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import Rating from './Rating';
 import { useContext } from 'react';
 import { Store } from '../Store';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export default function Product(props) {
   const { product } = props;
@@ -28,6 +28,7 @@ export default function Product(props) {
       type: 'CART_ADD_ITEM',
       payload: { ...item, quantity },
     });
+    toast.success(`${product.name} added to cart`, { autoClose: 500 });
   };
 
   const detailsPage = () => {

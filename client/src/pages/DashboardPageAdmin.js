@@ -67,7 +67,7 @@ export default function DashboardPageAdmin() {
           <Row>
             <Col md={4}>
               <Card>
-                <Card.Body>
+                <Card.Body className="text-center">
                   <Card.Title>
                     {summary.users && summary.users[0]
                       ? summary.users[0].numUsers
@@ -79,7 +79,7 @@ export default function DashboardPageAdmin() {
             </Col>
             <Col md={4}>
               <Card>
-                <Card.Body>
+                <Card.Body className="text-center">
                   <Card.Title>
                     {summary.orders && summary.users[0]
                       ? summary.orders[0].numOrders
@@ -91,7 +91,7 @@ export default function DashboardPageAdmin() {
             </Col>
             <Col md={4}>
               <Card>
-                <Card.Body>
+                <Card.Body className="text-center">
                   <Card.Title>
                     ₱
                     {summary.orders && summary.users[0]
@@ -104,7 +104,7 @@ export default function DashboardPageAdmin() {
             </Col>
           </Row>
           <div className="my-3">
-            <div className="mb-3 mt-5">
+            <div className="mb-3 mt-4">
               <h3 className="h1-title py-1 px-3">Sales</h3>
             </div>
             {summary.dailyOrders.length === 0 ? (

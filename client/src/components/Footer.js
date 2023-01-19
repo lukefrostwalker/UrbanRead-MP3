@@ -81,9 +81,8 @@ export default function Footer() {
                 <ul className="list-unstyled">
                   <li>
                     <a href="https://lukefrostwalker.github.io/JayCaguin/">
-                      Jay Caguin
+                      Jay Caguin 2023
                     </a>
-                    2023
                   </li>
                   <li>
                     <small>Pampanga, Philippines</small>

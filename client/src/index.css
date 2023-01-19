@@ -55,8 +55,12 @@ fieldset:disabled .btn {
   border: none !important;
 }
 .prodListPageBtn {
-  width: 50px;
+  width: 80px !important;
 }
+.createProductBtn {
+  width: 200px !important;
+}
+.createProductBtn,
 .prodListPageBtn,
 .closeSearch,
 .reviewSubmitBtn,
@@ -76,6 +80,7 @@ fieldset:disabled .btn {
   box-shadow: inset 0 0 0 0 #d34e24;
   background-color: transparent;
 }
+.createProductBtn:hover,
 .prodListPageBtn:hover,
 .closeSearch:hover,
 .reviewSubmitBtn:hover,
@@ -384,4 +389,13 @@ footer li {
 }
 /* .footer-socials {
   margin-left: 3rem;
+} */
+.good {
+  background-color: #537a5a4f;
+}
+.bad {
+  background-color: #c05746;
+}
+/* .editDescription {
+  height: 300px;
 } */

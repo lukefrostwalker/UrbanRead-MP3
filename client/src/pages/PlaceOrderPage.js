@@ -189,11 +189,10 @@ export default function PlaceOrderPage() {
                   <Row>
                     <Col>Shipping Fee</Col>
                     <Col>
-                      ₱
                       {cart.shippingPrice === 0 ? (
                         <strong>FREE</strong>
                       ) : (
-                        cart.shippingPrice.toFixed(2)
+                        `₱${cart.shippingPrice.toFixed(2)}`
                       )}
                     </Col>
                   </Row>

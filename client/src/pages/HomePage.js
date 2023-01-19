@@ -6,6 +6,7 @@ import Product from '../components/Product';
 import { Helmet } from 'react-helmet-async';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
+import Banner from '../components/Banner';
 // import data from '../data';
 
 const reducer = (state, action) => {
@@ -46,6 +47,8 @@ export default function HomePage() {
       <Helmet>
         <title>UrbanRead</title>
       </Helmet>
+      <Banner />
+
       <div className="d-flex justify-content-center mb-3 ">
         <h1 className="h1-title py-1 px-3">Book Titles</h1>
       </div>

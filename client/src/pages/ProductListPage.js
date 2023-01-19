@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useContext, useEffect, useReducer } from 'react';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import { Helmet } from 'react-helmet-async';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -140,16 +141,21 @@ export default function ProductListPage() {
 
   return (
     <div>
+      <Helmet>
+        <title>Products</title>
+      </Helmet>
+
+      <div className="d-flex justify-content-center mb-3 mt-3">
+        <h1 className="h1-title py-1 px-3">Products</h1>
+      </div>
+
       <Row>
-        <Col>
-          <h1>Products</h1>
-        </Col>
         <Col className="col text-end">
-          <div>
+          <div className="d-flex justify-content-center mt-3 mb-5">
             <button
               type="button"
               onClick={addHandler}
-              className="reviewSubmitBtn"
+              className="createProductBtn"
             >
               Create Product
             </button>

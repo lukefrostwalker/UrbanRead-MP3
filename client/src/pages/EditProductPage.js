@@ -142,9 +142,11 @@ export default function ProductEditScreen() {
   return (
     <Container className="small-container">
       <Helmet>
-        <title>Edit Product ${productId}</title>
+        <title>Edit Product {name}</title>
       </Helmet>
-      <h1>Edit Product {productId}</h1>
+      <h1>
+        Edit Product <span className="yellow d-block">{name}</span>
+      </h1>
 
       {loading ? (
         <LoadingBox></LoadingBox>
@@ -216,9 +218,12 @@ export default function ProductEditScreen() {
           <Form.Group className="mb-3" controlId="description">
             <Form.Label>Description</Form.Label>
             <Form.Control
+              as="textarea"
+              className="editDescription"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               required
+              style={{ height: '300px' }}
             />
           </Form.Group>
           <div className="mb-3">

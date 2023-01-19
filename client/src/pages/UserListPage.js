@@ -96,7 +96,9 @@ export default function UserListPage() {
       <Helmet>
         <title>Users</title>
       </Helmet>
-      <h1>Users</h1>
+      <div className="d-flex justify-content-center mb-3 mt-3">
+        <h1 className="h1-title py-1 px-3">Users</h1>
+      </div>
       {loadingDelete && <LoadingBox></LoadingBox>}
       {loading ? (
         <LoadingBox></LoadingBox>

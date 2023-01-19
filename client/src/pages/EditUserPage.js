@@ -92,9 +92,12 @@ export default function EditUserPage() {
   return (
     <Container className="small-container">
       <Helmet>
-        <title>Edit User ${userId}</title>
+        <title>Edit User {email}</title>
       </Helmet>
-      <h1>Edit User {userId}</h1>
+
+      <div className="d-flex justify-content-center mb-3 mt-3">
+        <h1 className="h1-title py-1 px-3">Edit {email}</h1>
+      </div>
 
       {loading ? (
         <LoadingBox></LoadingBox>

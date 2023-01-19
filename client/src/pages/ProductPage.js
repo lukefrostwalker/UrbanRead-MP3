@@ -154,7 +154,7 @@ export default function ProductPage() {
               Price: <strong className="yellow">₱{product.price}</strong>
             </ListGroup.Item>
             <ListGroup.Item>
-              Description:
+              <em>Description:</em>
               <p>{product.description}</p>
             </ListGroup.Item>
           </ListGroup>

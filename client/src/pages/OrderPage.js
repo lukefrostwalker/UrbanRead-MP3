@@ -202,7 +202,9 @@ export default function OrderPage() {
       </Helmet>
 
       <div className="d-flex justify-content-center mb-3 mt-3">
-        <h1 className="h1-title py-1 px-3">Order {orderId}</h1>
+        <h1 className="h1-title py-1 px-3">
+          Order <small>{orderId}</small>
+        </h1>
       </div>
 
       <Row>
@@ -272,7 +274,7 @@ export default function OrderPage() {
                           alt={item.name}
                           className="img-fluid rounded img-thumbnail"
                         ></img>{' '}
-                        <Link to={`/product/${item.slug}`} className="yellow">
+                        <Link to={`/product/${item.url}`} className="yellow">
                           <small>{item.name}</small>
                         </Link>
                       </Col>
@@ -313,7 +315,7 @@ export default function OrderPage() {
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <Row>
+                  <Row className="mb-2">
                     <Col>
                       <strong> Order Total</strong>
                     </Col>
@@ -322,6 +324,11 @@ export default function OrderPage() {
                         ₱{order.totalPrice.toFixed(2)}
                       </strong>
                     </Col>
+                  </Row>
+                  <Row className="text-secondary">
+                    <span>PAYPAL</span>
+                    <span>username: etho@duck.com</span>
+                    <span>password: 12345678</span>
                   </Row>
                 </ListGroup.Item>
                 {!order.isPaid && (

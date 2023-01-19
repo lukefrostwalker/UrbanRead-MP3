@@ -94,7 +94,9 @@ export default function OrderListPage() {
         <title>Orders</title>
       </Helmet>
 
-      <h1>Orders</h1>
+      <div className="d-flex justify-content-center mb-3 mt-3">
+        <h1 className="h1-title py-1 px-3">Orders</h1>
+      </div>
       {loadingDelete && <LoadingBox></LoadingBox>}
       {loading ? (
         <LoadingBox></LoadingBox>
@@ -108,23 +110,25 @@ export default function OrderListPage() {
               <th>USER</th>
               <th>DATE</th>
               <th>TOTAL</th>
-              <th>PAID</th>
+              <th className="text-center">PAID</th>
               <th>DELIVERED</th>
               <th>ACTIONS</th>
             </tr>
           </thead>
           <tbody>
             {orders.map((order) => (
-              <tr key={order._id}>
+              <tr key={order._id} className={order.isDelivered ? 'good' : ''}>
                 <td>{order._id}</td>
                 <td>{order.user ? order.user.name : 'DELETED USER'}</td>
                 <td>{order.createdAt.substring(0, 10)}</td>
                 <td>{order.totalPrice.toFixed(2)}</td>
-                <td>{order.isPaid ? order.paidAt.substring(0, 10) : 'No'}</td>
-                <td>
+                <td className="text-center">
+                  {order.isPaid ? order.paidAt.substring(0, 10) : '❌'}
+                </td>
+                <td className="text-center">
                   {order.isDelivered
                     ? order.deliveredAt.substring(0, 10)
-                    : 'No'}
+                    : '❌'}
                 </td>
                 <td>
                   <button
