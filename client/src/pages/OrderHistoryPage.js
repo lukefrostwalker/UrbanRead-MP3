@@ -62,6 +62,10 @@ export default function OrderHistoryPage() {
         <LoadingBox></LoadingBox>
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
+      ) : orders.length === 0 ? (
+        <div className="text-secondary d-flex justify-content-center align-items-center w-100 quickFix">
+          <h1>Order ka muna 😆</h1>
+        </div>
       ) : (
         <table className="table align-middle">
           <thead>

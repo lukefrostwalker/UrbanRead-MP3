@@ -38,7 +38,7 @@ export default function ProfilePage() {
 
     switch (password === confirmPassword) {
       case false:
-        toast.error('Password mismatch');
+        toast.error('Password mismatch', { autoClose: 3000 });
         break;
 
       case true:
@@ -55,7 +55,7 @@ export default function ProfilePage() {
           dispatch({ type: 'UPDATE_SUCCESS' });
           ctxDispatch({ type: 'USER_SIGNIN', payload: data });
           localStorage.setItem('userInfo', JSON.stringify(data));
-          toast.success('Update successful.');
+          toast.success('Update successful.', { autoClose: 500 });
         } catch (err) {
           dispatch({
             type: 'FETCH_FAIL',
@@ -65,7 +65,7 @@ export default function ProfilePage() {
         break;
 
       default:
-        toast.error('Try Again');
+        toast.error('Try Again', { autoClose: 500 });
     }
   };
 

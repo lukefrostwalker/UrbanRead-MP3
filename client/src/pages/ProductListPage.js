@@ -100,7 +100,11 @@ export default function ProductListPage() {
   }, [page, userInfo, successDelete]);
 
   const addHandler = async () => {
-    if (window.confirm('Add new product?')) {
+    if (
+      window.confirm(
+        'Add new product?\nClicking OK will add a product entry to the list.'
+      )
+    ) {
       try {
         dispatch({ type: 'CREATE_REQUEST' });
         const { data } = await axios.post(
@@ -110,7 +114,7 @@ export default function ProductListPage() {
             headers: { Authorization: `Bearer ${userInfo.token}` },
           }
         );
-        toast.success('Product addedd successfully');
+        toast.success('Product addedd successfully', { autoClose: 500 });
         dispatch({ type: 'CREATE_SUCCESS' });
         navigate(`/admin/product/${data.product._id}`);
       } catch (err) {
@@ -128,7 +132,7 @@ export default function ProductListPage() {
         await axios.delete(`/api/products/${product._id}`, {
           headers: { Authorization: `Bearer ${userInfo.token}` },
         });
-        toast.success('Product removed successfully');
+        toast.success('Product removed successfully', { autoClose: 500 });
         dispatch({ type: 'DELETE_SUCCESS' });
       } catch (err) {
         toast.error(getError(error));
@@ -187,7 +191,11 @@ export default function ProductListPage() {
               {products.map((product) => (
                 <tr key={product._id}>
                   <td>{product._id}</td>
-                  <td>{product.name}</td>
+                  <td>
+                    <a href={`/product/${product.url}`} className="link-light">
+                      {product.name}
+                    </a>
+                  </td>
                   <td>{product.price}</td>
                   <td>{product.genre}</td>
                   <td>{product.author}</td>

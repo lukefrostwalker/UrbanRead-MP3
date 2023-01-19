@@ -140,81 +140,83 @@ export default function SearchPage() {
       </Helmet>
       <Row>
         <Col md={3}>
-          <h4>Genres</h4>
-          <div className="searchPageQuery">
-            <ul>
-              <li>
-                <Link
-                  className={'all' === genre ? 'text-bold' : ''}
-                  to={getFilterUrl({ genre: 'all' })}
-                >
-                  Any
-                </Link>
-              </li>
-              {genres.map((c) => (
-                <li key={c}>
+          <small>
+            <h4>Genre</h4>
+            <div className="searchPageQuery">
+              <ul>
+                <li>
                   <Link
-                    to={getFilterUrl({ genre: c })}
-                    className={c === genre ? 'text-bold' : ''}
+                    className={'all' === genre ? 'text-bold' : ''}
+                    to={getFilterUrl({ genre: 'all' })}
                   >
-                    {c}
+                    Any
                   </Link>
                 </li>
-              ))}
-            </ul>
-          </div>
-          <div className="searchPageQuery">
-            <h4>Price</h4>
-            <ul>
-              <li>
-                <Link
-                  className={'all' === price ? 'text-bold' : ''}
-                  to={getFilterUrl({ price: 'all' })}
-                >
-                  Any
-                </Link>
-              </li>
-              {prices.map((p) => (
-                <li key={p.value}>
+                {genres.map((c) => (
+                  <li key={c}>
+                    <Link
+                      to={getFilterUrl({ genre: c })}
+                      className={c === genre ? 'text-bold' : ''}
+                    >
+                      {c}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="searchPageQuery">
+              <h4>Price</h4>
+              <ul>
+                <li>
                   <Link
-                    to={getFilterUrl({ price: p.value })}
-                    className={p.value === price ? 'text-bold' : ''}
+                    className={'all' === price ? 'text-bold' : ''}
+                    to={getFilterUrl({ price: 'all' })}
                   >
-                    {p.name}
+                    Any
                   </Link>
                 </li>
-              ))}
-            </ul>
-          </div>
-          <div className="searchPageQuery">
-            <h4>Customer Review</h4>
-            <ul className="searchPageRatings">
-              {ratings.map((r) => (
-                <li key={r.name}>
+                {prices.map((p) => (
+                  <li key={p.value}>
+                    <Link
+                      to={getFilterUrl({ price: p.value })}
+                      className={p.value === price ? 'text-bold' : ''}
+                    >
+                      {p.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="searchPageQuery">
+              <h4>Customer Review</h4>
+              <ul className="searchPageRatings">
+                {ratings.map((r) => (
+                  <li key={r.name}>
+                    <Link
+                      to={getFilterUrl({ rating: r.rating })}
+                      className={
+                        `${r.rating}` === `${rating}`
+                          ? 'text-bold searchPageRatingsBold'
+                          : ''
+                      }
+                    >
+                      <Rating caption={' & Up'} rating={r.rating}></Rating>
+                    </Link>
+                  </li>
+                ))}
+                <li>
                   <Link
-                    to={getFilterUrl({ rating: r.rating })}
+                    to={getFilterUrl({ rating: 'all' })}
                     className={
-                      `${r.rating}` === `${rating}`
-                        ? 'text-bold searchPageRatingsBold'
-                        : ''
+                      rating === 'all' ? 'text-bold searchPageRatingsBold' : ''
                     }
                   >
-                    <Rating caption={' & Up'} rating={r.rating}></Rating>
+                    <Rating caption={' & Up'} rating={0}></Rating>
                   </Link>
                 </li>
-              ))}
-              <li>
-                <Link
-                  to={getFilterUrl({ rating: 'all' })}
-                  className={
-                    rating === 'all' ? 'text-bold searchPageRatingsBold' : ''
-                  }
-                >
-                  <Rating caption={' & Up'} rating={0}></Rating>
-                </Link>
-              </li>
-            </ul>
-          </div>
+              </ul>
+            </div>{' '}
+          </small>
         </Col>
         <Col md={9}>
           {loading ? (

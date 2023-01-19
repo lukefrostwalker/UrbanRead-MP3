@@ -77,7 +77,7 @@ export default function OrderListPage() {
         await axios.delete(`/api/orders/${order._id}`, {
           headers: { Authorization: `Bearer ${userInfo.token}` },
         });
-        toast.success('Order deleted successfully');
+        toast.success('Order deleted successfully', { autoClose: 500 });
         dispatch({ type: 'DELETE_SUCCESS' });
       } catch (err) {
         toast.error(getError(error));

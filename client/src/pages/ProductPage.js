@@ -88,7 +88,7 @@ export default function ProductPage() {
   const submitHandler = async (e) => {
     e.preventDefault();
     if (!comment || !rating) {
-      toast.error('Please rate and enter a review.');
+      toast.error('Please rate and enter a review.', { autoClose: 3000 });
       return;
     }
     try {
@@ -103,7 +103,7 @@ export default function ProductPage() {
       dispatch({
         type: 'CREATE_SUCCESS',
       });
-      toast.success('Review submitted successfully!');
+      toast.success('Review submitted successfully!', { autoClose: 500 });
       setComment('');
       setRating(0);
       product.reviews.unshift(data.review);

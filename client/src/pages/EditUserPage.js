@@ -82,7 +82,7 @@ export default function EditUserPage() {
       dispatch({
         type: 'UPDATE_SUCCESS',
       });
-      toast.success('Update successful');
+      toast.success('Update successful', { autoClose: 500 });
       navigate('/admin/users');
     } catch (error) {
       toast.error(getError(error));

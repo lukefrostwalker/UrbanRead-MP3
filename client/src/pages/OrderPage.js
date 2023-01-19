@@ -105,7 +105,7 @@ export default function OrderPage() {
           }
         );
         dispatch({ type: 'PAY_SUCCESS', payload: data });
-        toast.success('Payment successful!');
+        toast.success('Payment successful!', { autoClose: 500 });
       } catch (err) {
         dispatch({ type: 'PAY_FAIL', payload: getError(err) });
         toast.error(getError(err));
@@ -184,7 +184,7 @@ export default function OrderPage() {
         }
       );
       dispatch({ type: 'DELIVER_SUCCESS', payload: data });
-      toast.success('Order is delivered');
+      toast.success('Order is delivered', { autoClose: 500 });
     } catch (err) {
       toast.error(getError(err));
       dispatch({ type: 'DELIVER_FAIL' });

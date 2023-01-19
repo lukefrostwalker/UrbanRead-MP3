@@ -80,7 +80,7 @@ export default function UserListPage() {
         await axios.delete(`/api/users/${user._id}`, {
           headers: { Authorization: `Bearer ${userInfo.token}` },
         });
-        toast.success('User deleted successfully');
+        toast.success('User deleted successfully', { autoClose: 500 });
         dispatch({ type: 'DELETE_SUCCESS' });
       } catch (error) {
         toast.error(getError(error));

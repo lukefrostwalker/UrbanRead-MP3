@@ -25,7 +25,7 @@ export default function SignupPage() {
   const submitHandler = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      toast.error('Passwords do not match');
+      toast.error('Passwords do not match', { autoClose: 2000 });
       return;
     }
     try {

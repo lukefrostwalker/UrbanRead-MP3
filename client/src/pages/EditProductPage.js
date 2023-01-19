@@ -109,10 +109,10 @@ export default function ProductEditScreen() {
       dispatch({
         type: 'UPDATE_SUCCESS',
       });
-      toast.success('Product updated successfully');
+      toast.success('Product updated successfully', { autoClose: 500 });
       navigate('/admin/products');
     } catch (err) {
-      toast.error(getError(err));
+      toast.error(getError(err), { autoClose: 3000 });
       dispatch({ type: 'UPDATE_FAIL' });
     }
   };
@@ -131,10 +131,10 @@ export default function ProductEditScreen() {
       });
       dispatch({ type: 'UPLOAD_SUCCESS' });
 
-      toast.success('Image uploaded successfully');
+      toast.success('Image uploaded successfully', { autoClose: 500 });
       setImage(data.secure_url);
     } catch (err) {
-      toast.error(getError(err));
+      toast.error(getError(err), { autoClose: 3000 });
       dispatch({ type: 'UPLOAD_FAIL', payload: getError(err) });
     }
   };
@@ -227,9 +227,13 @@ export default function ProductEditScreen() {
             />
           </Form.Group>
           <div className="mb-3">
-            <Button disabled={loadingUpdate} type="submit">
+            <button
+              className="placeOrderBtn"
+              disabled={loadingUpdate}
+              type="submit"
+            >
               Update
-            </Button>
+            </button>
             {loadingUpdate && <LoadingBox></LoadingBox>}
           </div>
         </Form>
