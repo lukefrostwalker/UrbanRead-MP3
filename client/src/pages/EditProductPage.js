@@ -8,7 +8,6 @@ import Form from 'react-bootstrap/Form';
 import { Helmet } from 'react-helmet-async';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-import Button from 'react-bootstrap/Button';
 import { toast } from 'react-toastify';
 
 const reducer = (state, action) => {

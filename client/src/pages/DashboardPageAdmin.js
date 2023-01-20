@@ -53,7 +53,6 @@ export default function DashboardPageAdmin() {
 
   return (
     <div>
-      {' '}
       <div className="d-flex justify-content-center mb-3 mt-3">
         <h1 className="h1-title py-1 px-3">Dashboard</h1>
       </div>
@@ -63,7 +62,6 @@ export default function DashboardPageAdmin() {
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <>
-          {' '}
           <Row>
             <Col md={4}>
               <Card>
