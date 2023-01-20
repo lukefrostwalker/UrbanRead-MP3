@@ -15,7 +15,7 @@ export default function Footer() {
               <p className="card-title colored">Contact information —</p>
               <span className="card-text scolor mb-1">
                 <ul className="list-unstyled">
-                  <li>Feel free to reach out to me any time.</li>
+                  <li>Feel free to reach out to us any time.</li>
                   <li className="ms-2">
                     <a href="mailto:urbanread@outlook.ph">
                       <i className="fa-solid fa-envelope"></i>{' '}
