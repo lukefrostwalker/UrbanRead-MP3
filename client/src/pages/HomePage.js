@@ -61,7 +61,7 @@ export default function HomePage() {
         ) : (
           <Row>
             {products.map((product) => (
-              <Col key={product.url} sm={6} md={3} lg={3} className="mb-3">
+              <Col key={product.url} sm={6} md={6} lg={3} className="mb-3">
                 <Product product={product} />
               </Col>
             ))}

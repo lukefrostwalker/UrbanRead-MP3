@@ -275,13 +275,18 @@ td {
 .product-card {
   background-color: #283845;
   padding: 15px 10px 20px 10px;
+  min-width: 230px;
+}
+.product-card > a {
+  margin-left: auto;
+  margin-right: auto;
 }
 .product-card-img {
   width: 100%;
   max-width: 300px;
   height: 100%;
   min-height: 400px;
-  max-height: 400px;
+  max-height: auto;
 }
 .product-card-title {
   color: #f5b700;
@@ -365,7 +370,10 @@ td {
 /************************* 
   FOOTER
  *************************/
-
+footer img {
+  max-width: 120px;
+  max-height: 120px;
+}
 .card-group,
 footer {
   background-color: #335c67;
@@ -401,4 +409,10 @@ footer li {
 } */
 .quickFix {
   height: 300px;
+}
+
+@media screen and (max-width: 575px) {
+  .footer-img {
+    width: 30vw;
+  }
 }

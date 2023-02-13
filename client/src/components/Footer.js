@@ -6,8 +6,12 @@ export default function Footer() {
       <small>
         <div className="card-group pt-3 container">
           <div className="card border-0 footer-card">
-            <div className="card-body">
-              <img src="/images/logo.png" height="150px" alt="UrbanRead" />
+            <div className="card-body d-flex justify-content-center align-item-center">
+              <img
+                src="/images/logo.png"
+                className="footer-img"
+                alt="UrbanRead"
+              />
             </div>
           </div>
           <div className="card border-0 footer-card">
@@ -17,9 +21,9 @@ export default function Footer() {
                 <ul className="list-unstyled">
                   <li>Feel free to reach out to us any time.</li>
                   <li className="ms-2">
-                    <a href="mailto:urbanread@outlook.ph">
+                    <a href="mailto:info@jaycaguin.com">
                       <i className="fa-solid fa-envelope"></i>{' '}
-                      urbanread@outlook.ph
+                      info@jaycaguin.com
                     </a>
                   </li>
                   <li className="ms-2">
@@ -80,9 +84,7 @@ export default function Footer() {
               <span className="card-text">
                 <ul className="list-unstyled">
                   <li>
-                    <a href="https://lukefrostwalker.github.io/JayCaguin/">
-                      Jay Caguin 2023
-                    </a>
+                    <a href="https://jaycaguin.com/">Jay Caguin 2023</a>
                   </li>
                   <li>
                     <small>Pampanga, Philippines</small>
@@ -90,7 +92,7 @@ export default function Footer() {
                   <li>
                     <ul className="list-unstyled d-flex">
                       <li>
-                        <a href="https://lukefrostwalker.github.io/JayCaguin/">
+                        <a href="https://jaycaguin.com/">
                           <i className="fa-solid fa-user fa-xl img"></i>
                         </a>
                       </li>

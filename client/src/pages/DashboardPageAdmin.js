@@ -8,6 +8,7 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { Store } from '../Store';
 import { getError } from '../utils';
+import { Helmet } from 'react-helmet-async';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -53,6 +54,9 @@ export default function DashboardPageAdmin() {
 
   return (
     <div>
+      <Helmet>
+        <title>Dashboard</title>
+      </Helmet>
       <div className="d-flex justify-content-center mb-3 mt-3">
         <h1 className="h1-title py-1 px-3">Dashboard</h1>
       </div>
@@ -62,7 +66,7 @@ export default function DashboardPageAdmin() {
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <>
-          <Row>
+          <Row className="gap-md-0 gap-3">
             <Col md={4}>
               <Card>
                 <Card.Body className="text-center">

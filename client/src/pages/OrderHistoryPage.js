@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useReducer } from 'react';
+import Table from 'react-bootstrap/Table';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import LoadingBox from '../components/LoadingBox';
@@ -67,7 +68,7 @@ export default function OrderHistoryPage() {
           <h1>Order ka muna 😆</h1>
         </div>
       ) : (
-        <table className="table align-middle">
+        <Table className="table align-middle" responsive>
           <thead>
             <tr className="yellow">
               <th>ID</th>
@@ -106,7 +107,7 @@ export default function OrderHistoryPage() {
               </tr>
             ))}
           </tbody>
-        </table>
+        </Table>
       )}
     </div>
   );

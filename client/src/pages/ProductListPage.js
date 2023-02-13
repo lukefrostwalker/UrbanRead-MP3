@@ -10,6 +10,7 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { Store } from '../Store';
 import { getError } from '../utils';
+import Table from 'react-bootstrap/Table';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -176,7 +177,7 @@ export default function ProductListPage() {
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <>
-          <table className="table align-middle">
+          <Table className="table align-middle" responsive>
             <thead>
               <tr className="yellow">
                 <th>ID</th>
@@ -221,7 +222,7 @@ export default function ProductListPage() {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </Table>
           <div className="productListPage">
             {[...Array(pages).keys()].map((x) => (
               <Link
